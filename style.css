@@ -1,0 +1,46 @@
+.main-con{
+    height: 40vw;
+    width: 80vw;
+    margin-left: 10vw;
+    margin-top: 5vw;
+    border-radius: 2vw;
+    border: black solid;
+
+}
+
+.enter-comment{
+    height: 10vw;
+    width: 75vw;
+    margin-left: 2.5vw;
+    margin-top: 2vw;
+    border-radius: 2vw;
+    border: red solid;
+}
+
+.show-comments{
+    height: 23vw;
+    width: 75vw;
+    margin-left: 2.5vw;
+    margin-top: 2vw;
+    border-radius: 2vw;
+    border: red solid;
+}
+
+.input-comment{
+    width: 62.5vw;
+    height: 6vw;
+    margin-left: 10vw;
+    margin-top: 1vw;
+}
+
+.input-txt{
+    width: 7.5vw;
+    height: 8vw;
+    position: absolute;
+    margin-left: 0.75vw;
+    margin-top: 1vw;
+}
+
+.submit{
+    margin-left: 2vw;
+}
