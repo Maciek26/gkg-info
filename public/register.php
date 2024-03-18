@@ -2,6 +2,7 @@
 include 'db_connect.php';
 $connection = OpenCon();
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,14 +28,14 @@ if(isset($_GET['register'])) {
         echo '<script>alert("Bitte eine gültige E-Mail-Adresse eingeben")</script>';
         $error = true;
     }
-    if(strlen($vorname)==0){
-        echo 'Du hast doch nh Vornamen oder?<br>';
+    if(strlen($vorname)==0 || preg_match('/[^a-z0-9 ]+/i',$vorname)){
+        echo 'Namen eingeben OHNE < oder ><br>';
     }
-    if(strlen($nachname)==0){
-        echo 'Und ein Nachnamen hast du auch nicht?<br>';
+    if(strlen($nachname)==0 || preg_match('/[^a-z0-9 ]+/i',$nachname)){
+        echo 'Nachnamen eingeben OHNE < oder ><br>';
     }
-    if(strlen($passwort) == 0) {
-        echo 'Bitte ein Passwort angeben<br>';
+    if(strlen($passwort) == 0 || str_contains("<", ">")) {
+        echo 'Bitte ein Passwort angeben ohne < oder ><br>';
         $error = true;
     }
     if($passwort != $passwort2) {

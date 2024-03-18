@@ -4,6 +4,59 @@ body{
     background-color: #000000;
 }
 
+.nav{
+    width: 60vw;
+    height: 5vw;
+
+    position: absolute;
+    margin-left: 1vw;
+}
+
+
+
+@keyframes Mace {
+    0% {
+        text-shadow: 0.3vw 0.1vw 0.4vw rgba(0, 0, 0, 0);
+    }
+    15%{
+        text-shadow: 0.3vw 0.1vw 0.4vw rgba(150, 150, 150, 0.22);
+    }
+    35% {
+        text-shadow: 0.3vw 0.1vw 0.4vw rgba(224, 224, 224, 0.68);
+    }
+    55% {
+        text-shadow: 0.3vw 0.1vw 0.4vw rgba(245, 245, 245, 0.86);
+    }
+    75% {
+        text-shadow: 0.3vw 0.1vw 0.4vw rgba(203, 203, 203, 0.82);
+    }
+    100% {
+        text-shadow: 0.3vw 0.1vw 0.4vw rgba(0, 0, 0, 0);
+    }
+}
+
+.MACE-div {
+    width: 7.5vw;
+    height: 3vw;
+    margin-top: 0.75vw;
+    font-size: 3vw;
+    color: white;
+    letter-spacing: 0.1vw;
+    text-transform: uppercase;
+}
+
+
+.nav-welcome{
+    width: 30vw;
+    height: 4vw;
+
+    margin-left: 15vw;
+    position: absolute;
+    margin-top: -1.5vw;
+    font-size: 1.5vw;
+    color: white;
+}
+
 
 .main-con{
     height: 40vw;
@@ -11,7 +64,7 @@ body{
     margin-left: 1.5vw;
     margin-top: 5vw;
     border-radius: 2vw;
-    border: #d40606 solid;
+    border: #838383 solid;
     position: absolute;
     display: flex;
     flex-direction: row;    /*left to right sort*/
@@ -23,6 +76,18 @@ body{
 
     grid-template-columns: 3vw max-content 3vw;
 }
+
+.theme-txt{
+    width: 70vw;
+    height: 5vw;
+
+    position: absolute;
+    font-size: 1.5vw;
+    text-align: center;
+    color: white;
+    margin-top: -0.2vw;
+}
+
 
 .comment{
     height: 10vw;
@@ -37,22 +102,56 @@ body{
 
 
 .main-con-chosen{
-    height: 30vw;
-    width: 50vw;
-    margin-left: 25vw;
-    margin-top: 50vw;
+    height: 38vw;
+    width: 70vw;
+    margin-left: 15vw;
+    margin-top: 6vw;
     border-radius: 2vw;
-    border: #d40606 solid;
+    border: #a6a6a6 solid;
     position: absolute;
-    display: flex;
+    display: none;
+    background-color: rgb(16, 16, 16);
+}
+
+.close {
+    position: absolute;
+
+    width: 2vw;
+    height: 2vw;
+    opacity: 0.3;
+    margin-left: 67.5vw;
+    margin-top: 1vw;
+
+}
+.close:hover {
+    transition: opacity 0.5s;
+    opacity: 1;
+}
+.close:before, .close:after {
+    position: absolute;
+
+    content: ' ';
+    height: 2vw;
+    width: 0.2vw;
+    background-color: #d00606;
+}
+.close:before {
+    transform: rotate(45deg);
+}
+.close:after {
+    transform: rotate(-45deg);
 }
 
 .chosen-name {
-    width: 5vw;
-    height: 2vw;
-    background-color: aquamarine;
+    width: 30vw;
+    height: 4vw;
+    /*background-color: aquamarine;*/
     position: absolute;
-    margin-left: 12.5vw;
+    margin-left: 20vw;
+    margin-top: 0.5vw;
+    font-size: 2.5vw;
+    text-align: center;
+    color: white;
 }
 
 .chosen-rating {
@@ -72,29 +171,96 @@ body{
 }
 
 .main-display-comments {
-    width: 40vw;
-    height: 20vw;
+    width: 60vw;
+    height: 30vw;
     border: white 0.1vw solid;
     position: absolute;
     margin-left: 5vw;
-    margin-top: 3vw;
+    margin-top: 3.5vw;
     display: flex;
-    flex-direction: row;    /*left to right sort*/
+    flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
+
     gap: 4vw 3vw;
 
     grid-template-columns: 3vw max-content 3vw;
 }
 
+.foreign_whole{
+    width: 25vw;
+    height: 7.5vw;
+    background-color: #cccccc;
+    position: relative;
+    margin-left: 2vw;
+    border-radius: 0.6vw;
+
+}
+
+.foreign_username{
+    width: 10vw;
+    height: 2vw;
+
+    font-size: 1vw;
+    position: absolute;
+    margin-left: 0.4vw;
+    margin-top: 0.2vw;
+}
+
+.foreign_rating{
+    width: 10vw;
+    height: 2vw;
+
+    font-size: 1vw;
+    position: absolute;
+    margin-left: 17.5vw;
+    margin-top: 0.2vw;
+}
+
+.foreign_comment {
+    width: 22.25vw;
+    height: 5vw;
+    background-color: rgba(150, 150, 150, 0.6);
+    position: absolute;
+    margin-top: 1.75vw;
+    margin-left: 1.25vw;
+    font-size: 0.75vw;
+    border-radius: 0.5vw;
+    border: solid black 0.15vw;
+    resize: none;
+    padding-left: 0.25vw;
+}
+
+.openMakeComment{
+    width: 15vw;
+    height: 3vw;
+    border-radius: 0.6vw;
+    border:solid rgb(255, 255, 255) 0.15vw;
+    background-color: #0c0c0c;
+    position: absolute;
+    margin-left: 27.5vw;
+    margin-top: 34vw;
+    font-size: 1.65vw;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    line-height: 3vw;
+    opacity: 0.3;
+}
+
+.openMakeComment:hover{
+    transition: opacity 0.5s;
+    opacity: 1;
+}
+
 .input-comment{
     width: 25vw;
-    height: 30vw;
+    height: 27.5vw;
     border: white solid 0.1vw;
     position: absolute;
-    margin-left: 2.5vw;
-    margin-top: 41.5vw;
+    margin-left: 22.5vw;
+    margin-top: 4.75vw;
+    background-color: black;
+    display: none;
 }
 
 input[type=range] {
@@ -148,10 +314,4 @@ input[type=range]::-webkit-slider-thumb {
     text-align: center;
 }
 
-.foreign_comment{
-    width: 10vw;
-    height: 10vw;
-    background-color: #d40606;
-    position: relative;
 
-}

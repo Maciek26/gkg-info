@@ -2,6 +2,49 @@
 include 'db_connect.php';
 $connection = OpenCon();
 $showLogin = true;
+
+
+
+if (isset($_COOKIE['UserEmail'])){
+    $error = false;
+    $email = $_COOKIE['UserEmail'];
+    $passwort = $_COOKIE['UserPW'];
+    echo $email;
+    echo "test0";
+
+    if(!$error){
+        $statement = $connection->prepare('SELECT * FROM users WHERE email= :email');
+        $result = $statement->execute(array('email' => $email));
+        $user = $statement->fetch();
+
+        if (!strlen($user['email'])==0 && $passwort == $user['passwort']){
+
+            $showLogin = false;
+
+
+            $_SESSION['userId'] = $user['id'];
+
+
+            header("Location: kommentar/kommentar.php");
+            echo 'Du wurdest erfolgreich eingeloggt!<br>';
+            echo 'Willkommen ',$user['vorname'] ,'<br>';
+            echo $user['email'], '<br>';
+            ?>
+            <a href="kommentar/kommentar.php">Zu den Kommentaren</a>
+            <form action="?ausloggen=1" method="post">
+                <input type="submit" value="Ausloggen">
+            </form>
+            <?php
+        } else {
+            $showLogin = true;
+
+        }
+
+    }
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +61,8 @@ if (isset($_GET['ausloggen']) && isset($_SESSION['userId'])){
     $showLogin = true;
     echo 'Erfolgreich ausgeloggt';
 }
+
+
 
 
 if (isset($_GET['login'])){
@@ -41,11 +86,18 @@ if (isset($_GET['login'])){
 
         if (!strlen($user['email'])==0 && password_verify($passwort, $user['passwort'])){
             $showLogin = false;
+
             $_SESSION['userId'] = $user['id'];
+            setcookie("UserName", $user['vorname'], time() + (86400 * 30), "/");
+            setcookie("UserEmail", $email, time() + (86400 * 30), "/");
+            setcookie("UserPW", $user['passwort'], time() + (86400 * 30), "/");
+
+            header("Location: kommentar/kommentar.php");
             echo 'Du wurdest erfolgreich eingeloggt!<br>';
             echo 'Willkommen ',$user['vorname'] ,'<br>';
             echo $user['email'], '<br>';
             ?>
+                <a href="kommentar/kommentar.php">Zu den Kommentaren</a>
                 <form action="?ausloggen=1" method="post">
                     <input type="submit" value="Ausloggen">
                 </form>
